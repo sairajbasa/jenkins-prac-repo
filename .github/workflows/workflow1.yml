@@ -49,6 +49,9 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v6.1.0
 
+      - name: terraform init
+        run: terraform init
+
       - name: terraform apply
         run: terraform apply --auto-approve tfplan
         
