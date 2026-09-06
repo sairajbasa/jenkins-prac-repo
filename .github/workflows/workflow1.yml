@@ -1,0 +1,23 @@
+name: Terraform Code
+
+on: workflow_dispatch
+
+jobs:
+  job1:
+    runs-on: ubuntu-slim
+    steps:
+      - name: git checkout
+        uses: actions/actions/checkout@v6.1.0
+
+      - name: terraform download
+        uses: hashicorp/setup-terraform@v2.0.3
+
+      - name: terraform initialization
+        run: terraform init
+
+      - name: terraform plan
+        run:  terraform plan -out=tfplan
+
+      - name: terraform apply
+        run: terraform apply tfplan
+        
