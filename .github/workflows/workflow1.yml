@@ -23,6 +23,28 @@ jobs:
       - name: terraform plan
         run:  terraform plan -out=tfplan
 
+      - name: terraform plan upload
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: terraform-plan
+          path: tfplan
+
+  job2:
+    runs-on: ubuntu-slim
+    needs: job1
+    steps:
+      - name: terraform plan download
+        uses: actions/download-artifact@v7.0.0
+        with:
+          name: terraform-plan
+          path: tfplan
+
+      - name: terraform install
+        uses: hashicorp/setup-terraform@v2.0.3
+
+      - name: git checkout
+        uses: actions/checkout@v6.1.0
+
       - name: terraform apply
-        run: terraform apply tfplan
+        run: terraform apply --auto-approve tfplan
         
