@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - name: git checkout
-        uses: actions/actions/checkout@v6.1.0
+        uses: actions/checkout@v6.1.0
 
       - name: terraform download
         uses: hashicorp/setup-terraform@v2.0.3
