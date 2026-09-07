@@ -38,6 +38,7 @@ jobs:
   job2:
     runs-on: ubuntu-slim
     environment: production
+    needs: job1
     
 
     steps:
