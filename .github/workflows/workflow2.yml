@@ -63,15 +63,15 @@ jobs:
 
       - name: Terraform Setup
         uses: hashicorp/setup-terraform@v2.0.3
-
-      - name: Terraform Initialization
-        run: terraform init
-
+        
       - name: Terraform Download
-        uses: actions/download-artifact@v3.1.0
+        uses: uses: actions/download-artifact@v7.0.0
         with:
           name: terraform-plan
           path: .
+
+      - name: Terraform Initialization
+        run: terraform init
 
       - name: Terraform Apply
         run: terraform ${{ inputs.action }} --auto-approve tfplan
