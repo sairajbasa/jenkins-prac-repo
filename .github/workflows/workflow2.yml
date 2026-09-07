@@ -37,7 +37,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -out-tfplan
+        run: terraform plan -out=tfplan
 
       - name: Upload tfplan to registry
         uses: actions/upload-artifact@v7.0.1
